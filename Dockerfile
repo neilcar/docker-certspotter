@@ -16,7 +16,7 @@ RUN apt-get update && \
   apt-get install -y curl && \
   rm -rf /var/lib/apt/lists/*
 
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-$TARGETARCH /tini
 
 RUN mkdir /certspotter/ && \
   cd /certspotter && \
