@@ -1,5 +1,5 @@
 ARG GO_VERSION=1.19
-
+ARG TARGETARCH
 # Go builder
 
 FROM golang:${GO_VERSION} AS builder
@@ -16,7 +16,7 @@ RUN apt-get update && \
   apt-get install -y curl && \
   rm -rf /var/lib/apt/lists/*
 
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-$TARGETARCH /tini
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} /tini
 
 RUN mkdir /certspotter/ && \
   cd /certspotter && \
