@@ -1,5 +1,5 @@
 ARG GO_VERSION=1.19
-ARG TARGETARCH
+
 # Go builder
 
 FROM golang:${GO_VERSION} AS builder
@@ -9,7 +9,7 @@ RUN go install software.sslmate.com/src/certspotter/cmd/certspotter@latest
 # Final image
 
 FROM debian:bullseye
-
+ARG TARGETARCH
 ENV TINI_VERSION v0.18.0
 
 RUN apt-get update && \
